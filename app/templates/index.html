@@ -4,10 +4,14 @@
 <link rel="stylesheet" href="{% static 'main.css' %}">
 <script src="{% static 'main.js' %}"></script>
 
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 	<nav class="nav nav_top" id="nav_main">
 		<h3 class="lbl_logo">Curvi</h3>
 		<ul class="nav_list">
-			<li class="nav_item" id="nav_login" target="login-popup">Login</li>
+			<li class="nav_item" id="nav_login" data-toggle="modal" data-target="#modalLRForm">Login</li>
 		</ul>
 	</nav>
 	<main id="content">
@@ -65,4 +69,73 @@
 				</div>
 			</div>
 		</div>
-	</main> {% endblock %}
+	</main><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+					<!--Modal: Login / Register Form-->
+					<div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog cascading-modal" role="document">
+							<!--Content-->
+							<div class="modal-content">
+					
+								<!--Modal cascading tabs-->
+								<div class="modal-c-tabs">
+					
+									<!-- Nav tabs -->
+									<ul class="nav nav-tabs tabs-2 light-blue darken-3" role="tablist">
+										<li class="nav-item">
+											<a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"  style="color: #513AA0">
+												<i class="fa fa-user mr-1" style="color: #513AA0"></i> Login</a>
+										</li>
+									</ul>
+					
+									<!-- Tab panels -->
+									<div class="tab-content">
+										<!--Panel 7-->
+										<div class="tab-pane fade in show active" id="panel7" role="tabpanel">
+					
+											<!--Body-->
+											<div class="modal-body mb-1">
+												<div class="md-form form-sm mb-5">
+													<i class="fa fa-envelope prefix"></i>
+													<label data-error="wrong" data-success="right" for="modalLRInput10" style="color: #513AA0">Your email</label>
+													<input type="email" id="modalLRInput10" class="form-control form-control-sm validate">
+												</div>
+												<div class="md-form form-sm mb-4">
+													<i class="fa fa-lock prefix"></i>
+													<label data-error="wrong" data-success="right" for="modalLRInput11" style="color: #513AA0">Your password</label>
+													<input type="password" id="modalLRInput11" class="form-control form-control-sm validate">
+												</div>
+												<div class="text-center mt-2" style="margin-top:10px">
+													<button class="btn btn-info" style="background-color: #513AA0; border-color: transparent;">Log in
+														<i class="fa fa-sign-in ml-1"></i>
+													</button>
+												</div>
+											</div>
+											<!--Footer-->
+											<div class="modal-footer">
+												<div class="options text-center text-md-right mt-1">
+													<p>Not a member?
+															<a href="#" class="blue-text" style="color: #513AA0">Sign Up</a>
+													</p>
+													<p>Forgot
+															<a href="#" class="blue-text" style="color: #513AA0">Password?</a>
+													</p>
+												</div>
+												<button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+											</div>
+					
+										</div>
+										<!--/.Panel 7-->		
+								</div>
+							</div>
+							<!--/.Content-->
+						</div>
+					</div>
+					<!--Modal: Login / Register Form-->
+					
+					<!-- <div class="text-center">
+						<a href="" class="btn btn-default btn-rounded my-3" data-toggle="modal" data-target="#modalLRForm">Launch Modal LogIn/Register</a>
+					</div>
+	 -->
+	{% endblock %}
