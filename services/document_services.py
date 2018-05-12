@@ -25,3 +25,14 @@ class DocumentService():
     def update_document_category_by_id(param):
         result = Document.objects.exec_sp('jh_Document_UpdateDocumentsCategoryByID', param)
         return result
+
+    @staticmethod
+    @exception
+    def save_documents(param):
+        results = Document.objects.exec_sp_tolist('jh_Document_SaveDocuments', param)
+
+        documents = []
+        for result in results:
+            documents.append(Document(DocumentID=result[0], Title=result[1], Description=result[2], RegistrantID=result[3], DocumentUrl=result[4], StatusRecord=[5], CategoryID=result[6]))
+
+        return documents
