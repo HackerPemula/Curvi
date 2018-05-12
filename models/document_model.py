@@ -2,7 +2,7 @@ from django.db import models
 from models.managers.sp_managers import StoredProcedureManager
 
 class Document(models.Model):
-    objects = StoredProcedureManager('WarehouseDB')
+    objects = StoredProcedureManager('CurviDB')
 
     DocumentID = models.BigIntegerField(primary_key=True)
     Title = models.CharField(max_length=200)
