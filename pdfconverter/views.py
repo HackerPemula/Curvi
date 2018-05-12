@@ -3,13 +3,26 @@ import os, sys
 from PIL import Image
 from fpdf import FPDF
 from django.http import HttpResponse
+from django.shortcuts import render
+from django.core.files.storage import FileSystemStorage
 
 basepath = os.path.abspath(os.path.dirname(sys.argv[0])) + '\\pdfconverter\\curiculum_vitae\\'
 
-def file2PDF(request):
-    try:
-        filename = request.filename
+def submit(request):
+    if request.method == 'POST' and request.FILES['applicant_resume']:
+        myfile = request.FILES['applicant_resume']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        uploaded_file_url = fs.url(filename)
+        
+        os.rename(filename, "pdfconverter\\curiculum_vitae\\" + filename)
+        file2PDF(filename)
 
+        return render(request, 'index.html', {'uploaded_file_url': uploaded_file_url })
+    return render(request, 'index.html')
+
+def file2PDF(filename):
+    try:
         deck = None
         pdfformatindex = None
         extension = os.path.splitext(filename)
