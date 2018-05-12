@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
+from celery.schedules import crontab
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'services',
     'channels',
     'worker',
+    'auth_v2',
     'app',
 ]
 
@@ -52,9 +54,17 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'auth_v2.auth_middleware.AuthenticationMiddleware',
 ]
 
 ROOT_URLCONF = 'Curvi.urls'
+
+LOGIN_URL = '/'
+
+LOGIN_REQUIRED_URLS = (
+#  r'^about\.html$',
+ r'^hrportal/', # allow any URL under /hrportal/*
+) 
 
 TEMPLATES = [
     {
@@ -120,7 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Jakarta'
 
 USE_I18N = True
 
@@ -139,6 +149,15 @@ STATICFILES_DIRS = (
 )
 
 # STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'active_user',
+    }
+}
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
 ASGI_APPLICATION = 'Curvi.routing.application'
 
@@ -159,3 +178,10 @@ BROKER_URL = 'redis://localhost:6379/0'  # our redis address
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Jakarta'
+CELERY_BEAT_SCHEDULE = {
+    'training': {
+        'task': 'worker.tasks.',
+        'schedule': crontab(0, 0, day_of_month='2-30/3')
+    }
+}

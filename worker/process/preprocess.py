@@ -26,13 +26,10 @@ def translate(topic):
 
     return results
 
-def start_preprocessing(predict=False, documents=None):
+def start_preprocessing(documents, predict=False):
     try:
         logging.info("Start preprocessing data")
         nltk.download('punkt')
-
-        if not documents:
-            documents = DocumentService.get_all_documents()
 
         if not documents:
             raise Exception("Document is empty")

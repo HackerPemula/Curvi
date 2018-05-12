@@ -8,6 +8,7 @@ from services.topic_result_services import TopicResultService
 params = { 'num_of_topic': 5, 'num_of_features': 1000 }
 
 def model_topic(documents):
+    logging.info("Extracting topic features")
     X_topics = None
     for category_id in list(documents):
         try:
@@ -38,4 +39,5 @@ def model_topic(documents):
         except Exception as e:
             logging.error(str(e))
 
+    logging.info("Finished extracting topic features")
     return documents
