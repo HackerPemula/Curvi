@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'models',
+    'services',
+    'channels',
+    'worker',
+    'app',
 ]
 
 MIDDLEWARE = [
@@ -118,3 +123,23 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+ASGI_APPLICATION = 'backendweb.routing.application'
+
+# Channels settings
+CHANNEL_LAYERS = {
+   "default": {
+       "BACKEND": "channels_redis.core.RedisChannelLayer",  # use redis backend
+       'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    #    "ROUTING": "app.routing.channel_routing",  # load routing from our routing.py file
+   },
+}
+
+# Celery settings
+BROKER_URL = 'redis://localhost:6379/0'  # our redis address
+# use json format for everything
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
