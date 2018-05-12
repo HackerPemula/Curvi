@@ -25,7 +25,7 @@ SECRET_KEY = '=$zhz(6s8uycn$v9j-zscgt^lar_k$80$xh%t$(%f$uhv2sz@n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -59,7 +59,9 @@ ROOT_URLCONF = 'Curvi.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            'app/templates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,7 +88,8 @@ DATABASES = {
     'CurviDB': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Hackathon-Dev',
-        'PASSWORD': '',
+        'USER': 'curviapp',
+        'PASSWORD': 'appapp123',
         'HOST': '35.187.234.147',
         'PORT': '3306',
     },
