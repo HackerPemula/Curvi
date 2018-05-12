@@ -10,7 +10,7 @@ $(document).ready(function() {
 
 	$nav_main.on('click', '.nav_item', function(e) {
 		var $this = $(this);
-		$content.load('subview/'+$this.attr('target')+'.html', onSubViewLoad[$this.attr('target')]).hide().fadeIn(200);
+		$content.load('subview/'+$this.attr('target'), onSubViewLoad[$this.attr('target')]).hide().fadeIn(200);
 		$('.active').removeClass('active');
 		$this.addClass('active');
 	});

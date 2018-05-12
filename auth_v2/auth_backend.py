@@ -10,18 +10,18 @@ def hash_password(password):
     
 class AuthBackend(object):
     @staticmethod
-    def authenticate(binusianid, password):
+    def authenticate(username, password):
         try:
             param = []
-            param.append(binusianid)
+            param.append(username)
             param.append(hash_password(password))
             
-            user = User.objects.exec_sp_tosingle('bn_Warehouse_DoLogin', param)
+            user = User.objects.exec_sp_tosingle('jh_Curvi_DoLogin', param)
             
             result = ""
 
             if user:
-                result = User(BinusianId=user[0], Name=user[1], RoleId=user[2])
+                result = User(StaffName=user[1], StaffUsername=user[2])
             
             return result
 

@@ -8,6 +8,7 @@ class User(AbstractBaseUser):
     class Meta:
         app_label = 'auth_v2'
 
+    StaffName = models.CharField(max_length=50)
     StaffUsername = models.CharField(max_length=50)
     StaffPassword = models.CharField(max_length=100)
     

@@ -11,4 +11,26 @@ $(document).ready(function() {
 		else
 			$custom_file_upload_btn.html(btn_upload_original_text);
 	});
+
+	$('#login-form').on('submit', function(e) {
+		e.preventDefault();
+
+		$.ajax({
+            url: '/login/',
+            type: 'POST',
+            data: $('#login-form').serialize(),
+            success: function(data) {
+                if(data.message == "success") {
+                    window.location.href = data.url;
+                } else {
+					console.log(message);
+					$("#error-msg").show().css("display", "flex");
+                }
+            },
+            error: function(data) {
+                if(data.status == 401)
+                    $("#error-msg").show().css("display", "flex");
+            }
+        });
+	});
 });
