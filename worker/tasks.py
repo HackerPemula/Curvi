@@ -32,3 +32,40 @@ def train_documents():
         classifier.train_classifier(documents)
     except Exception as e:
         logging.error(str(e))
+
+@app.task
+def insert_documents(DocumentTitle, DocumentURL, RegistrantNama):
+    try:
+        DocumentDescription = pdf2text(DocumentURL)
+
+        documents = DocumentService.save_documents([DocumentTitle, DocumentDescription, DocumentURL, "Active"])
+    except Exception as e:
+        logging.error(str(e))
+
+@app.task
+def pdf2text(file):
+    manager = PDFResourceManager()
+    pagenum = set()
+    codec = 'utf-8'
+    caching = True
+
+    output = io.StringIO()
+    converter = TextConverter(
+        manager, output, codec=codec, laparams=LAParams())
+
+    interpreter = PDFPageInterpreter(manager, converter)
+    f = open(file, 'rb')
+
+    pages = PDFPage.get_pages(
+        f, pagenum, caching=caching, check_extractable=True)
+
+    for page in pages:
+        interpreter.process_page(page)
+
+    converted = output.getvalue()
+
+    f.close()
+    converter.close()
+    output.close()
+
+    return converted
