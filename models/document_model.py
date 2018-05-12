@@ -10,3 +10,4 @@ class Document(models.Model):
     RegistrantID = models.CharField(max_length=20)
     DocumentUrl = models.CharField(max_length=200)
     StatusRecord = models.CharField(max_length=1)
+    CategoryID = models.IntegerField()

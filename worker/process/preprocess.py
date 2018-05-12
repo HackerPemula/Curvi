@@ -26,16 +26,20 @@ def translate(topic):
 
     return results
 
-def start_preprocessing():
+def start_preprocessing(predict=False, documents=None):
     try:
+        logging.info("Start preprocessing data")
         nltk.download('punkt')
 
-        documents = DocumentService.get_all_documents()
+        if not documents:
+            documents = DocumentService.get_all_documents()
 
         if not documents:
             raise Exception("Document is empty")
 
         tokenized = []
+
+        preprocessed_documents = {}
 
         for document in documents:
             tokenized = nltk.tokenize.word_tokenize(document.Content)
@@ -71,10 +75,18 @@ def start_preprocessing():
             stemmed = stemmer.stem(' '.join(id_removed)).split()
             tokenized = ' '.join(tokenized)
 
-            param = [document[0], tokenized, stemmed]
-            PreprocessedDocumentService.insert_preprocessed_document(param)
+            if not predict:
+                param = [document[0], tokenized, stemmed]
+                preprocessed_document = PreprocessedDocumentService.insert_preprocessed_document(param)
 
-        return
+            if preprocessed_document:
+                if document.CategoryID not in preprocessed_documents:
+                    preprocessed_documents[document.CategoryID] = []
+
+                preprocessed_documents[document.CategoryID].append(preprocessed_document)
+
+        logging.info("Finish preprocessing data")
+        return preprocessed_documents
     except Exception as e:
         logging.exception(str(e))
         

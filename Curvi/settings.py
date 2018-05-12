@@ -82,7 +82,14 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    },
+    'CurviDB': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Hackathon-Dev',
+        'PASSWORD': '',
+        'HOST': '35.187.234.147',
+        'PORT': '3306',
+    },
 }
 
 
@@ -124,7 +131,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-ASGI_APPLICATION = 'backendweb.routing.application'
+ASGI_APPLICATION = 'Curvi.routing.application'
 
 # Channels settings
 CHANNEL_LAYERS = {
