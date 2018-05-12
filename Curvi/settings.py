@@ -25,7 +25,7 @@ SECRET_KEY = '=$zhz(6s8uycn$v9j-zscgt^lar_k$80$xh%t$(%f$uhv2sz@n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -80,8 +80,12 @@ WSGI_APPLICATION = 'Curvi.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Hackathon-Dev',
+	'USER': 'herman',
+	'PASSWORD': 'herman123',
+	'HOST': '127.0.0.1',
+	'PORT': '3306',
     }
 }
 
@@ -124,7 +128,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-ASGI_APPLICATION = 'backendweb.routing.application'
+ASGI_APPLICATION = 'Curvi.routing.application'
 
 # Channels settings
 CHANNEL_LAYERS = {
