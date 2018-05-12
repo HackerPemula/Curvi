@@ -1,0 +1,68 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block content %}
+<link rel="stylesheet" href="{% static 'main.css' %}">
+<script src="{% static 'main.js' %}"></script>
+
+	<nav class="nav nav_top" id="nav_main">
+		<h3 class="lbl_logo">Curvi</h3>
+		<ul class="nav_list">
+			<li class="nav_item" id="nav_login" target="login-popup">Login</li>
+		</ul>
+	</nav>
+	<main id="content">
+		<div class="header_content">
+			<div class="inner">
+				<div class="left">
+					<h3>Submit Your Application!</h3>
+					<form action="" method="post">
+						<label for="txt_name">Full Name</label>
+						<input type="text" name="applicant_name" id="txt_name">
+						<label for="file_resume">Your Resume</label>
+						<input type="file" name="applicant_resume" id="file_resume" class="custom_file">
+						<label for="file_resume">
+						<span>Upload Your Resume</span>
+						</label>
+						<button type="submit">Submit Your Application</button>
+					</form>
+				</div>
+				<div class="right">
+					<h3>What is Curvi?</h3>
+					<p>
+						Curvi is a web-based application and a service that aims to help and make the process of filtering resumes or CV quickly, and allows employers to quickly search through applications to find the right person for the job.
+					</p>
+					<p>
+						Curvi accomplishes this by classifying applications based on their content. Then, the employer can simply search the position that they are looking for in the search bar. The applications will then be filtered so that only the ones that are relevant to the position are shown, and are sorted from the highest-scoring, or "most-skilled" applicant based on the contents of their resume.
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="row_feature left">
+			<div class="feature">
+				<div class="feature_content">
+					
+				</div>
+			</div>
+		</div>
+		<div class="row_feature right">
+			<div class="feature">
+				<div class="feature_content">
+					
+				</div>
+			</div>
+		</div>
+		<div class="row_feature left">
+			<div class="feature">
+				<div class="feature_content">
+					
+				</div>
+			</div>
+		</div>
+		<div class="row_feature right">
+			<div class="feature">
+				<div class="feature_content">
+					
+				</div>
+			</div>
+		</div>
+	</main> {% endblock %}

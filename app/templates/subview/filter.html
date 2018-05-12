@@ -1,0 +1,56 @@
+<h3>CV Filtering</h3>
+
+<label for="txt_search">Input Your Keywords</label>
+<input type="text" id="txt_search">
+
+<div class="table_container">
+	<table id="tbl_filter">
+		<thead>
+			<tr>
+				<th>Applicant Name</th>
+				<th style="width: 40%;">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<span class="iName">Anu</span>
+				</td>
+				<td>
+					<span class="iView">View</span>
+					<span class="iAccept">Accept Application</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="iName">Ani</span>
+				</td>
+				<td>
+					<span class="iView">View</span>
+					<span class="iAccept">Accept Application</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="iName">Ana</span>
+				</td>
+				<td>
+					<span class="iView">View</span>
+					<span class="iAccept">Accept Application</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<table style="display: none;">
+	<tr id="loop_template">
+		<td>
+			<span class="iName"></span>
+		</td>
+		<td>
+			<span class="iView">View</span>
+			<span class="iAccept">Accept Application</span>
+		</td>
+	</tr>
+</table>

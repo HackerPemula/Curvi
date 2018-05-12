@@ -1,0 +1,95 @@
+body {
+	background-color: #334;
+}
+
+#content{
+	padding: 16px 16px 16px 236px;
+	color: white;
+	min-height: 100%
+}
+
+label {
+	display: inline-block;
+	margin: 16px 0;
+}
+
+input {
+	width: 100%;
+	padding: 8px;
+	box-sizing: border-box;
+	background-color: #0005;
+	border-radius: 3px;
+	color: white;
+	border: 0;
+	display: block;
+}
+
+.table_container {
+	padding: 0 20%;
+}
+
+table {
+	width: 100%;
+	margin: 16px 0;
+	border-spacing: 0;
+	border-style: collapse;
+}
+
+table thead {
+	background-color: #513AA0;
+}
+
+table th {
+	line-height: 3em;
+}
+
+
+table tbody td {
+	padding:16px;
+}
+
+table tbody tr:nth-child(odd) {
+	background-color: #31235f;
+}
+
+table tbody tr:nth-child(even) {
+	background-color: #223;
+}
+
+.iView {
+	box-sizing: border-box;
+	display: inline-block;
+	position: relative;
+	text-align: center;
+	background-color: #513AA0;
+	border-radius: 4px;
+	border: 0;
+	cursor: pointer;
+	padding: 8px;
+	margin: 0 10px;
+	color: white;
+
+	transition: all 0.1s ease-in-out;
+}
+.iView:active { 
+	background-color: #31235f;
+}
+
+.iAccept {
+	box-sizing: border-box;
+	display: inline-block;
+	position: relative;
+	text-align: center;
+	background-color: #A0513A;
+	border-radius: 4px;
+	border: 0;
+	cursor: pointer;
+	padding: 8px;
+	margin: 0 10px;
+	color: white;
+
+	transition: all 0.1s ease-in-out;
+}
+.iAccept:active { 
+	background-color: #5f3123;
+}

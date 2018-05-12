@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'hrportal.css' %}">
+<script src="{% static 'hrportal.js' %}"></script>
+
+	<nav class="nav nav_side" id="nav_main">
+		<h5 id="lbl_welcome">Welcome,</h5>
+		<h3 id="lbl_username">Username</h3>
+		<ul class="nav_list">
+			<li class="nav_item" id="nav_upload" target="upload">Upload File</li>
+			<li class="nav_item" id="nav_view" target="view">View Incoming CV</li>
+			<li class="nav_item" id="nav_filter" target="filter">CV Filtering</li>
+			<li class="nav_item" id="nav_logout" target="logout">Logout</li>
+		</ul>
+	</nav>
+	<main id="content">
+		
+	</main>
+
+{% endblock %}
