@@ -40,7 +40,7 @@ def start_preprocessing(documents, predict=False):
 
         for document in documents:
             tokenized = nltk.tokenize.word_tokenize(document.Content)
-
+            logging.info("Tokenizing data")
         # en_stopwords = set(nltk.corpus.stopwords.words('english'))
         
         # en_removed = []
@@ -69,7 +69,7 @@ def start_preprocessing(documents, predict=False):
             factory = StemmerFactory()
             stemmer = factory.create_stemmer()
 
-            stemmed = stemmer.stem(' '.join(id_removed)).split()
+            stemmed = stemmer.stem(' '.join(id_removed))
             tokenized = ' '.join(tokenized)
 
             if not predict:

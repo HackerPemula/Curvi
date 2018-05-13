@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,10 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'models',
     'services',
-    'channels',
     'worker',
     'auth_v2',
-    'celery',
     'app',
 ]
 

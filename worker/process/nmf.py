@@ -35,8 +35,10 @@ def model_topic(documents):
                         param = [documents.DocumentID, topic]
                         TopicResultService.insert_topic_result(param)
 
-            documents[category_id] = X_topics
+            print(topic_summaries)
+            documents[category_id] = np.copy(X_topics)
         except Exception as e:
+            del documents[category_id]
             logging.error(str(e))
 
     logging.info("Finished extracting topic features")
