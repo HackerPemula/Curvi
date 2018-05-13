@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
-
+from __future__ import absolute_import
 from celery.schedules import crontab
 import os
 
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'channels',
     'worker',
     'auth_v2',
+    'celery',
     'app',
 ]
 
@@ -181,7 +182,7 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Asia/Jakarta'
 CELERY_BEAT_SCHEDULE = {
     'training': {
-        'task': 'worker.tasks.',
+        'task': 'worker.tasks.train_documents',
         'schedule': crontab(0, 0, day_of_month='2-30/3')
     }
 }

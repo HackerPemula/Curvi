@@ -16,10 +16,7 @@ class TopicService():
     @staticmethod
     @exception
     def insert_topic(param):
-        results = Topic.objects.exec_sp_tosingle('jh_Topic_InsertTopic', param)
-
-        topic = []
-        for result in results:
-            topic.append(Topic(TopicID=result[0], EnglishTopic=result[1], IndonesianTopic=result[2]))
+        result = Topic.objects.exec_sp_tosingle('jh_Topic_InsertTopic', param)
+        topic = Topic(TopicID=result[0], EnglishTopic=result[1], IndonesianTopic=result[2])
 
         return topic

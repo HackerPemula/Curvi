@@ -16,6 +16,6 @@ class TopicResultService():
     @staticmethod
     @exception
     def insert_topic_result(param):
-        results = TopicResult.objects.exec_sp_tosingle('jh_Topic_InsertTopicResult', param)
+        results = TopicResult.objects.exec_sp('jh_Topic_InsertTopicResult', param)
 
         return results

@@ -89,7 +89,7 @@ class PDFConverter(TemplateView):
                 return HttpResponse(status=404)
 
             # Processing text
-            tasks.insert_documents(filename, basepath + "..\\result\\" + extension[0] + ".pdf", applicant_name)
+            tasks.insert_documents.delay(filename, basepath + "..\\result\\" + extension[0] + ".pdf", applicant_name)
 
             return HttpResponse("Success")
         except:

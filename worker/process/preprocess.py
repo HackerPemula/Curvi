@@ -57,7 +57,7 @@ def start_preprocessing(documents, predict=False):
                     topic = translate(word)
 
                 if topic:
-                    translated.append(topic)
+                    translated.append(topic.IndonesianTopic)
 
             id_stopwords = set(nltk.corpus.stopwords.words('indonesian'))
             id_removed = []
@@ -73,7 +73,7 @@ def start_preprocessing(documents, predict=False):
             tokenized = ' '.join(tokenized)
 
             if not predict:
-                param = [document[0], tokenized, stemmed]
+                param = [document.DocumentID, tokenized, stemmed]
                 preprocessed_document = PreprocessedDocumentService.insert_preprocessed_document(param)
 
             if preprocessed_document:
